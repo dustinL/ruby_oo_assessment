@@ -40,10 +40,30 @@ def new_album
   new_album.save
   new_artist.add_album(new_album)
 
-  puts "\nNew album added!\n"
+  puts "\n #{new_album.name} added!\n"
 end
 
 def view_collection
+  puts "\nHere is your music collection:\n"
+  Artist.all.each_with_index do |artist, index|
+    puts "#{index+1}. #{artist.name}"
+    artist.albums.each do |album|
+      puts album.name
+    end
+  end
+end
+
+def search_collection
+  puts "\nEnter artist name to see their albums\n"
+  user_input = gets.chomp
+  selected_artist = Artist.all.select { |artist| user_input == artist.name }
+
+  if selected_artist.length < 1
+    puts "\nNo match found. Note: Names are cAsE sensitive\n"
+    search_collection
+  else
+    selected_artist.first.albums.each_with_index { |album, index| puts "#{index+1}. #{album.name} \n"}
+  end
 
 end
 
