@@ -40,7 +40,7 @@ def new_album
   new_album.save
   new_artist.add_album(new_album)
 
-  puts "\n #{new_album.name} added!\n"
+  puts "\n#{new_album.name} added!\n"
 end
 
 def view_collection
