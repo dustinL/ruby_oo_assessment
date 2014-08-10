@@ -16,5 +16,9 @@ class Artist
     @@artists << self
   end
 
+  def add_album(title)
+    @albums << title
+  end
+
 end
 

@@ -1,5 +1,6 @@
 require 'rspec'
 require 'artist'
+require 'album'
 
 describe Artist do
   it 'initializes a new artist' do
@@ -13,5 +14,19 @@ describe Artist do
     expect(Artist.all).to eq [test_artist]
   end
 
+  it 'adds an album to an artist collection' do
+    test_artist = Artist.new({:name => "The Strokes"})
+    test_album = Album.new("Is This It")
+    test_artist.add_album(test_album)
+    expect(test_artist.albums).to eq [test_album]
+  end
 
+  it 'displays the albums for a given artist' do
+    test_artist = Artist.new({:name => "The Strokes"})
+    test_album = Album.new("Is This It")
+    test_artist.add_album(test_album)
+    test_album2 = Album.new("Room on Fire")
+    test_artist.add_album(test_album2)
+    expect(test_artist.albums).to eq [test_album, test_album2]
+  end
 end
