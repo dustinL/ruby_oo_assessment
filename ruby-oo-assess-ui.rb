@@ -29,18 +29,22 @@ def main_menu
 end
 
 def new_album
-  puts "\nPlease enter the artist name"
+  puts "\nPlease enter the artist name:"
   artist_input = gets.chomp
-  new_artist = Artist.new(artist_input)
+  new_artist = Artist.new({:name => artist_input})
   new_artist.save
 
-  puts "\nPlease enter album name"
+  puts "\nPlease enter #{new_artist.name} album name:"
   album_input = gets.chomp
   new_album = Album.new(album_input)
   new_album.save
   new_artist.add_album(new_album)
 
-  puts "\nNew album added\n"
+  puts "\nNew album added!\n"
+end
+
+def view_collection
+
 end
 
 main_menu
