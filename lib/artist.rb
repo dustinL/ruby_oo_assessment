@@ -3,7 +3,7 @@ class Artist
   attr_reader :name, :albums
   @@artists = []
 
-  def initialize (attributes)
+  def initialize(attributes)
     @name = attributes[:name]
     @albums = []
   end
